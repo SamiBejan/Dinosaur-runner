@@ -18,6 +18,7 @@ h1 {
 }
 
 div.area {
+    position: relative;
     grid-row: 2;
     grid-column: 2;
     align-self: center;
@@ -25,8 +26,8 @@ div.area {
 }
 
 td {
-    min-width: 10px;
-    height: 10px;
+    min-width: 7px;
+    height: 7px;
     position: relative;
     background-color: aquamarine;
 }
@@ -38,4 +39,37 @@ td {
 .ground {
     background-color: chocolate;
 }
- 
+
+.time, .record {
+    display: flex;
+    z-index: 1;
+    grid-column: 2;
+    grid-row: 2;
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    height: 10%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    align-self: flex-start;
+    justify-self: flex-end;
+    gap: 7%;
+    margin-top: 3%;
+    font-weight: bold;
+    font-size: large;
+}
+
+.time {
+    margin-right: 1%; 
+}
+
+.record {
+    margin-right:12%;
+    visibility: hidden;
+}
+
+.clock, .flag {
+    width: 30px;
+    height: 30px;
+}
