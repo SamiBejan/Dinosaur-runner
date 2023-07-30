@@ -4,8 +4,9 @@ let dinosaur  = [{"line": 1, "col": 3}, {"line": 1, "col": 5}, {"line": 2, "col"
 {"line": 2, "col": 5}, {"line": 3, "col": 2}, {"line": 3, "col": 3}, {"line": 3, "col": 4}, {"line": 3, "col": 5},
 {"line": 4, "col": 5}, {"line": 5, "col": 5}, {"line": 5, "col": 6}, {"line": 6, "col": 5}, {"line": 6, "col": 6}];
 let dinosaurUp = false, space = false;
-let mover;
-let phaseInd = 1;
+let mover, timer;
+let phaseInd = 1, minutes = 0, seconds = 0;
+let start = false;
 
 createGrid();
 createDinosaur();
@@ -40,17 +41,21 @@ function deleteDinosaur() {
     }
 }
 
-//If the pressed Key is Space and the dinosaur is on the ground, the jump is released.
-function releaseJump(e) {
+/*If the key pressed is Space and the dinosaur is on the ground, the jump is released.
+Also, if the game din't start or is over, it will start*/
+function jumpOrStart(e) {
     if (e.code === "Space" && dinosaurUp === false)  {
-        console.log(e.code);
         dinosaurUp = true;
-        mover = setInterval(jump, 35);
+        mover = setInterval(move, 35);
+        if (start === false) {
+            start = true;
+            timer = setInterval(runTime, 1000);
+        }
     }
 }
 
 //The dinosaur moves up and then down. When it touches back the ground, the jump move ends.
-function jump() {
+function move() {
     ++phaseInd;
     if (phaseInd <= 15) {
         for (let i = dinosaur.length - 1; i >= 0; --i) {
@@ -72,4 +77,21 @@ function jump() {
     }
 }
 
-window.addEventListener('keydown', releaseJump);
+//We count the game time and make sure that the minutes and seconds are displayed with two digits
+function runTime() {
+    let prefixMin = "0", prefixSec = "0";
+    ++seconds;
+    if (seconds === 60) {
+        ++minutes;
+        seconds = 0;
+    }
+    if (seconds >= 10) {
+        prefixSec = "";
+    }
+    if (minutes >= 10) {
+        prefixMin = "";
+    }
+    document.getElementsByClassName("timer")[0].innerHTML = prefixMin + minutes + ":" + prefixSec + seconds;
+}
+
+window.addEventListener('keydown', jumpOrStart);
