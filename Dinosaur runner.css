@@ -19,6 +19,8 @@ h1 {
 
 div.area {
     position: relative;
+    display: grid;
+    grid-auto-flow: row;
     grid-row: 2;
     grid-column: 2;
     align-self: center;
@@ -26,10 +28,10 @@ div.area {
 }
 
 td {
-    min-width: 7px;
-    height: 7px;
+    min-width: 0.8vh;
+    height: 0.7vh;
     position: relative;
-    background-color: aquamarine;
+    background-color: aqua;
 }
 
 .dinosaur {
@@ -40,36 +42,40 @@ td {
     background-color: chocolate;
 }
 
-.time, .record {
+.sections {
+    position: absolute;
     display: flex;
     z-index: 1;
-    grid-column: 2;
-    grid-row: 2;
-    background-color: white;
-    align-items: center;
-    justify-content: center;
-    width: 10%;
-    height: 10%;
-    padding-top: 1%;
-    padding-bottom: 1%;
+    gap: 1vw;
     align-self: flex-start;
-    justify-self: flex-end;
-    gap: 7%;
-    margin-top: 3%;
-    font-weight: bold;
-    font-size: large;
+    justify-self: center;
+    margin-top: 1vh;
 }
 
-.time {
-    margin-right: 1%; 
+.time, .record {
+    display: flex;
+    background-color: white;
+    align-items: center;
+    justify-items: center;
+    min-width: fit-content;
+    max-width: 6vw;
+    max-height: 7vh;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+    padding-right: 0.5vh;
+    font-weight: bold;
+    font-size: larger;
 }
 
 .record {
-    margin-right:12%;
     visibility: hidden;
 }
 
 .clock, .flag {
-    width: 30px;
-    height: 30px;
+    max-width: 4vw;
+    max-height: 4vh;
+}
+
+.obstacle {
+    background-color: orange;
 }
