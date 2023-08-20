@@ -76,6 +76,19 @@ td {
     max-height: 4vh;
 }
 
-.obstacle {
+.cactus {
     background-color: orange;
+}
+
+.bird {
+    background-color: grey;
+}
+
+.endGamePopUp {
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    font-weight: bold;
+    font-size: larger;
+    visibility: hidden;
 }
