@@ -68,7 +68,7 @@ function jumpCrouchOrStart(e) {
         e.preventDefault();
         if (dinosaurUp === false && !end) {
             dinosaurUp = true;
-            jumper = setInterval(jump, 22);
+            jumper = setInterval(jump, 16);
         }
         if (!start) {
             startGame();
@@ -155,7 +155,7 @@ function stand(e) {
 The birds appear after the first minute*/
 function generateObstacles() {
     let obstacle = new Array(0);
-    if (minutes > 1) {
+    if (minutes >= 1) {
         obstInd = Math.ceil(Math.random() * 3);
     }
     if (obstInd < 3) {
@@ -247,7 +247,7 @@ function increaseObstacleSpeed() {
 
 //If the game that just ended establishes a time record, it is displayed
 function updateRecord() {
-    if (minutes > recordMin || seconds > recordSec) {
+    if (minutes > recordMin || (minutes === recordMin && seconds > recordSec)) {
         recordMin = minutes;
         recordSec = seconds;
         let prefixRecordSec = 0, prefixMinSec = 0;
